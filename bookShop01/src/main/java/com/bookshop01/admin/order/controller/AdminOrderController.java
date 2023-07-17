@@ -16,6 +16,6 @@ public interface AdminOrderController {
             HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	public ModelAndView orderDetail(@RequestParam("order_id") int order_id, 
             HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	
+	public ModelAndView searchOrder(@RequestParam Map<String, String> dataMap,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 }

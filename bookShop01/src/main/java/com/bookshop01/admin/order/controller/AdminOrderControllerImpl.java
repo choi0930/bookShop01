@@ -52,19 +52,43 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
 		
-		String beginDate =request.getParameter("beginDate");
-		String endDate = request.getParameter("endDate");
-		
-		/*if(beginDate == null && endDate == null) {
+		String beginDate =dateMap.get("beginDate");
+		String endDate = dateMap.get("endDate");
+		String command = dateMap.get("command");
+		if(command==null) {
+			command="no";
+		}
+		HashMap<String,Object> condMap=new HashMap<String,Object>();
+		List<OrderVO> newOrderList = null;
+		if(command.equals("list_detail_order_goods")) {
+			String search_type = dateMap.get("search_type");
+			String search_word = dateMap.get("search_word");
+			System.out.println(search_type);
+			if(section== null) {
+				section = "1";
+			}
+			condMap.put("section",section);
+			if(pageNum== null) {
+				pageNum = "1";
+			}
+			condMap.put("pageNum",pageNum);
+			condMap.put("beginDate",beginDate);
+			condMap.put("endDate", endDate);
+			condMap.put("search_type", search_type);
+			condMap.put("search_word", search_word);
+			newOrderList=adminOrderService.listNewOrder(condMap);
 			
+		
+		} else {
+		
+		if(beginDate == null && endDate == null) {
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
 		beginDate=tempDate[0];
 		endDate=tempDate[1];
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
 		}
-		*/
-		HashMap<String,Object> condMap=new HashMap<String,Object>();
+		
 		if(section== null) {
 			section = "1";
 		}
@@ -75,9 +99,11 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
-		List<OrderVO> newOrderList=adminOrderService.listNewOrder(condMap);
-		mav.addObject("newOrderList",newOrderList);
+		newOrderList=adminOrderService.listNewOrder(condMap);
 		
+		}	
+		
+		mav.addObject("newOrderList",newOrderList);
 		String beginDate1[]=beginDate.split("-");
 		String endDate2[]=endDate.split("-");
 		mav.addObject("beginYear",beginDate1[0]);
@@ -117,6 +143,13 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 		Map orderMap =adminOrderService.orderDetail(order_id);
 		mav.addObject("orderMap", orderMap);
 		return mav;
+	}
+
+	@Override
+	public ModelAndView searchOrder(Map<String, String> dataMap, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		
+		return null;
 	}
 	
 }

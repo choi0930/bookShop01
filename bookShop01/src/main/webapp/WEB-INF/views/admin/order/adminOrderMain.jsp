@@ -259,7 +259,7 @@ function fn_detail_search(){
     formObj.appendChild(i_search_word);
     document.body.appendChild(formObj); 
     formObj.method="post";
-    formObj.action="${contextPath}/admin/order/detailOrder.do";
+    formObj.action="${contextPath}/admin/order/adminOrderMain.do";
     formObj.submit();
     //alert("submit");
 	
@@ -359,7 +359,14 @@ function fn_detail_search(){
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${beginMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
+					        	<c:choose>
+					        		<c:when test="${i <10 }">
+					         	 		<option value="0${i }"  selected>0${i }</option>
+					         	 	</c:when>
+					         	 	<c:otherwise>
+					         	 		<option value="${i }"  selected>${i }</option>
+					         	 	</c:otherwise>
+					          </c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -378,7 +385,16 @@ function fn_detail_search(){
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
 					        <c:when test="${beginDay==i }">
-					          <option value="${i }"  selected>${i }</option>
+					        
+					          <c:choose>
+					        		<c:when test="${i <10 }">
+					         	 		<option value="0${i }"  selected>0${i }</option>
+					         	 	</c:when>
+					         	 	<c:otherwise>
+					         	 		<option value="${i }"  selected>${i }</option>
+					         	 	</c:otherwise>
+					          </c:choose>
+					          
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -398,10 +414,10 @@ function fn_detail_search(){
 					 <c:forEach   var="i" begin="0" end="5">
 					      <c:choose>
 					        <c:when test="${endYear==endYear-i }">
-					          <option value="${2016-i }" selected>${2016-i  }</option>
+					          <option value="${endYear-i }" selected>${endYear-i  }</option>
 					        </c:when>
 					        <c:otherwise>
-					          <option value="${2016-i }">${2016-i }</option>
+					          <option value="${endYear-i }">${endYear-i }</option>
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
@@ -410,7 +426,14 @@ function fn_detail_search(){
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${endMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
+					          <c:choose>
+					        		<c:when test="${i <10 }">
+					         	 		<option value="0${i }"  selected>0${i }</option>
+					         	 	</c:when>
+					         	 	<c:otherwise>
+					         	 		<option value="${i }"  selected>${i }</option>
+					         	 	</c:otherwise>
+					          </c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -429,7 +452,14 @@ function fn_detail_search(){
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
 					        <c:when test="${endDay==i }">
-					          <option value="${i }"  selected>${i }</option>
+					          <c:choose>
+					        		<c:when test="${i <10 }">
+					         	 		<option value="0${i }"  selected>0${i }</option>
+					         	 	</c:when>
+					         	 	<c:otherwise>
+					         	 		<option value="${i }"  selected>${i }</option>
+					         	 	</c:otherwise>
+					          </c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -453,7 +483,7 @@ function fn_detail_search(){
 						<option value="all" checked>전체</option>
 						<option value="orderer_name">주문자이름</option>
 						<option value="orderer_id">주문자아이디</option>
-						<option value="orderer_hp">주문자휴대폰번호</option>
+						<option value="orderer_hp_num">주문자휴대폰번호</option>
 						<option value="orderer_goods">주문상품품명</option>
 					</select>
 					<input  type="text"  size="30" name="t_search_word" disabled />  

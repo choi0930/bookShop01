@@ -18,6 +18,10 @@ public class AdminOrderDAOImpl  implements AdminOrderDAO{
 	
 	public ArrayList<OrderVO>selectNewOrderList(Map condMap) throws DataAccessException{
 		ArrayList<OrderVO>  orderList=(ArrayList)sqlSession.selectList("mapper.admin.order.selectNewOrderList",condMap);
+		if(orderList!=null) {
+			System.out.println("¿÷¿Ω");	
+		}
+		
 		return orderList;
 	}
 	public void  updateDeliveryState(Map deliveryMap) throws DataAccessException{

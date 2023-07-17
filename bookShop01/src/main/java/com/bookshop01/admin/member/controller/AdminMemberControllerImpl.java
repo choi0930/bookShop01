@@ -35,15 +35,17 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
-		String beginDate=null,endDate=null;
+		//String beginDate=null,endDate=null;
+		String beginDate =dateMap.get("beginDate");
+		String endDate = dateMap.get("endDate");
 		
+		if(beginDate == null && endDate == null) {
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
 		beginDate=tempDate[0];
 		endDate=tempDate[1];
-		
-		
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
+		}
 		
 		HashMap<String,Object> condMap=new HashMap<String,Object>();
 		if(section== null) {

@@ -96,13 +96,16 @@ FROM (
         FROM t_shopping_order
         WHERE DATE(pay_order_time) BETWEEN #{beginDate} AND #{endDate}
             <if test="search_type=='orderer_id'">
-                AND orderer_id = #{search_word}
+                AND member_id  like concat( '%', #{search_word}, '%' )
             </if>
             <if test="search_type=='orderer_name'">
-                AND orderer_name = #{search_word}
+                AND orderer_name like concat( '%', #{search_word}, '%' )
             </if>
             <if test="search_type=='orderer_hp_num'">
-                AND pay_orderer_hp_num = #{search_word} 
+                AND CONCAT(receiver_hp1, receiver_hp2, receiver_hp3)  like concat( '%', #{search_word}, '%' )
+            </if>
+            <if test="search_type=='orderer_goods'">
+                AND goods_title  like concat( '%', #{search_word}, '%' )
             </if>
         ORDER BY pay_order_time DESC
     ) AS t, (SELECT @rowNum := 0) AS r

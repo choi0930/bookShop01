@@ -201,7 +201,7 @@ function fn_detail_search(){
     i_search_type.name="search_type";
     i_search_word.name="search_word";
     
-    i_command.value="list_detail_order_goods";
+    i_command.value="list_detail_member";
 	i_beginDate.value=beginYear+"-"+beginMonth+"-"+beginDay;
     i_endDate.value=endYear+"-"+endMonth+"-"+endDay;
     i_search_type.value=search_type;
@@ -313,7 +313,14 @@ function fn_detail_search(){
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${beginMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
+					        	<c:choose>
+					        		<c:when test="${i <10}">
+					        			<option value="0${i }"  selected>0${i }</option>
+					        		</c:when>
+					         		<c:otherwise>
+					         		 	<option value="${i }"  selected>${i }</option>
+					         		</c:otherwise>
+					          	</c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -332,7 +339,14 @@ function fn_detail_search(){
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
 					        <c:when test="${beginDay==i }">
-					          <option value="${i }"  selected>${i }</option>
+					          <c:choose>
+					        		<c:when test="${i <10}">
+					        			<option value="0${i }"  selected>0${i }</option>
+					        		</c:when>
+					         		<c:otherwise>
+					         		 	<option value="${i }"  selected>${i }</option>
+					         		</c:otherwise>
+					          	</c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -352,10 +366,10 @@ function fn_detail_search(){
 					 <c:forEach   var="i" begin="0" end="5">
 					      <c:choose>
 					        <c:when test="${endYear==endYear-i }">
-					          <option value="${2016-i }" selected>${2016-i  }</option>
+					          <option value="${endYear-i }" selected>${endYear-i  }</option>
 					        </c:when>
 					        <c:otherwise>
-					          <option value="${2016-i }">${2016-i }</option>
+					          <option value="${endYear-i }">${endYear-i }</option>
 					        </c:otherwise>
 					      </c:choose>
 					    </c:forEach>
@@ -364,7 +378,14 @@ function fn_detail_search(){
 						 <c:forEach   var="i" begin="1" end="12">
 					      <c:choose>
 					        <c:when test="${endMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
+					          <c:choose>
+					        		<c:when test="${i <10}">
+					        			<option value="0${i }"  selected>0${i }</option>
+					        		</c:when>
+					         		<c:otherwise>
+					         		 	<option value="${i }"  selected>${i }</option>
+					         		</c:otherwise>
+					          	</c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
@@ -383,7 +404,14 @@ function fn_detail_search(){
 					  <c:forEach   var="i" begin="1" end="31">
 					      <c:choose>
 					        <c:when test="${endDay==i }">
-					          <option value="${i }"  selected>${i }</option>
+					          <c:choose>
+					        		<c:when test="${i <10}">
+					        			<option value="0${i }"  selected>0${i }</option>
+					        		</c:when>
+					         		<c:otherwise>
+					         		 	<option value="${i }"  selected>${i }</option>
+					         		</c:otherwise>
+					          	</c:choose>
 					        </c:when>
 					        <c:otherwise>
 					          <c:choose>
