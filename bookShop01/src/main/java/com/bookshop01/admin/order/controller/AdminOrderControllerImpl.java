@@ -51,15 +51,19 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
-		String beginDate=null,endDate=null;
 		
+		String beginDate =request.getParameter("beginDate");
+		String endDate = request.getParameter("endDate");
+		
+		/*if(beginDate == null && endDate == null) {
+			
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
 		beginDate=tempDate[0];
 		endDate=tempDate[1];
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
-		
-		
+		}
+		*/
 		HashMap<String,Object> condMap=new HashMap<String,Object>();
 		if(section== null) {
 			section = "1";

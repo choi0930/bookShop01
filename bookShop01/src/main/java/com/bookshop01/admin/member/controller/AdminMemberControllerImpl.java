@@ -31,7 +31,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-
+		
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
@@ -40,9 +40,10 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
 		beginDate=tempDate[0];
 		endDate=tempDate[1];
+		
+		
 		dateMap.put("beginDate", beginDate);
 		dateMap.put("endDate", endDate);
-		
 		
 		HashMap<String,Object> condMap=new HashMap<String,Object>();
 		if(section== null) {
@@ -55,6 +56,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
+		
 		ArrayList<MemberVO> member_list=adminMemberService.listMember(condMap);
 		mav.addObject("member_list", member_list);
 		

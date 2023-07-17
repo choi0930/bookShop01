@@ -213,7 +213,6 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 		<ul>
 			<li><a class="buy" href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_sales_price}','${goods.goods_fileName}');">구매하기 </a></li>
 			<li><a class="cart" href="javascript:add_cart('${goods.goods_id }')">장바구니</a></li>
-			
 			<li><a class="wish" href="#">위시리스트</a></li>
 		</ul>
 	</div>

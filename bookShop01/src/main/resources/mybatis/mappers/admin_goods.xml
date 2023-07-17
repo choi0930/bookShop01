@@ -137,14 +137,14 @@
 	    <![CDATA[
 		   insert into t_goods_detail_image (image_id,
 		                                     goods_id,
-																				 fileName,
-																				 fileType,
-																				 reg_id)
-											   					values(#{image_id},
-											   					 			 #{goods_id},
-											   							 	 #{fileName},
-											   								 #{fileType},
-											   								 #{reg_id} )
+									         fileName,
+											 fileType,
+											 reg_id)
+											 values(#{image_id},
+											 #{goods_id},
+											 #{fileName},
+											 #{fileType},
+											 #{reg_id} )
 		]]>
 	</insert>
 	<select id="selectNewGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
